@@ -18,7 +18,7 @@ def markdown_to_html_node(markdown):
                 parent_children_list.append(ParentNode("p",children_list))
             case BlockType.HEADING:
                 match = re.match(r"(#+)\s*(.*)", block)
-                cleaned = block.lstrip("#")
+                cleaned = block.lstrip("#").strip()
                 children_list = text_to_child_nodes(cleaned)
                 parent_children_list.append(ParentNode(f"h{len(match.group(1))}",children_list))
             case BlockType.QUOTE:

@@ -17,9 +17,9 @@ def main():
     # print(html_node)
     #nodes = text_to_textNode("This is **text** with an _italic_ word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://boot.dev)")
     #print(nodes)
-    basepath = sys.argv[1] if len(sys.argv) else "/"
+    basepath = sys.argv[1] if len(sys.argv)>1 else "/"
     print(basepath)
-    clean_and_clone("public", "static")
+    clean_and_clone("docs", "static")
     generate_page_recurs("content", "template.html" , "docs", basepath)
 
 

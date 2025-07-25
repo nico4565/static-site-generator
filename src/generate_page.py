@@ -28,10 +28,10 @@ def generate_page(from_path, template_path, dest_path, basepath):
     content_html = markdown_to_html_node(markdown).to_html()
     title = extract_title(markdown)
     template = template.replace("{{ Title }}",title)
+    template = template.replace("{{ Content }}", content_html)
+    
     template = template.replace("href=\"/",f"href=\"{basepath}")
     template = template.replace("src=\"/",f"src=\"{basepath}")
-    print(template)
-    template = template.replace("{{ Content }}", content_html)
     
     dir_name = os.path.dirname(dest_path)
     if not os.path.exists(dir_name):

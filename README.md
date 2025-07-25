@@ -5,7 +5,7 @@
 ## Usage
 As the title implies, this is meant to generate **static sites**.
 The core of the project consists of methods and logic designed to analyze, parse, and process these .md files.
-The end product cosists of an equal number of .html files.
+The end product consists of an equal number of .html files.
 
 The .md files are dissected into blocks of text. These blocks are then individually analyzed and transformed into HtmlNodes, forming a tree structure that represents the final .html document.
 

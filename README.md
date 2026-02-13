@@ -24,8 +24,8 @@ This project takes Markdown content and transforms it into static HTML pages, re
 
 
 
-/content (Markdown files) ──┐
-├──▶ SSG (Python) ──▶ /public (HTML files)
+/content (Markdown files) ──┐                                                                                                                                                            
+├──▶ SSG (Python) ──▶ /public (HTML files)                                                                                                                                               
 template.html ──────────────┘
 
 

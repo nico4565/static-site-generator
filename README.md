@@ -1,38 +1,77 @@
-# static-site-generator
+# Static Site Generator 🚀
 
- ----------------------------------
+
+I built a Python-based static site generator that turns Markdown files into a fully functional HTML website. This project helped me understand how tools like Hugo, Jekyll, and Gatsby work under the hood—by building one from scratch!
+
+
+**Features at a glance:**
+- Convert Markdown content into HTML pages  
+- Use a custom HTML template for styling  
+- Copy static assets (CSS, images) automatically  
+- Serve a fully functional site locally  
+
+
+---
+
+
+## Overview
+
+
+This project takes Markdown content and transforms it into static HTML pages, ready to be served by any web server. The focus was on learning the fundamentals of parsing, templating, and generating a complete site with Python.
+
+
+## Architecture
+
+
+
+/content (Markdown files) ──┐
+├──▶ SSG (Python) ──▶ /public (HTML files)
+template.html ──────────────┘
+
+
+
+## How It Works
+
+
+1. **Clean Build** – Clears the `/public` directory to ensure a fresh build  
+2. **Copy Static Assets** – Moves images, CSS, and other static files to `/public`  
+3. **Parse Markdown** – Reads each Markdown file from `/content`  
+4. **Convert to HTML** – Transforms Markdown into HTML using a custom parsing pipeline:  
+   - Splits content into blocks (paragraphs, headings, lists, etc.)  
+   - Converts blocks into an `HTMLNode` tree structure  
+   - Processes inline elements (bold, italic, links) via intermediate `TextNode` objects  
+5. **Apply Template** – Injects generated HTML into `template.html`  
+6. **Write Output** – Saves final HTML files to `/public`  
+
 
 ## Usage
-As the title implies, this is meant to generate **static sites**.
-The core of the project consists of methods and logic designed to analyze, parse, and process these .md files.
-The end product consists of an equal number of .html files.
-
-The .md files are dissected into blocks of text. These blocks are then individually analyzed and transformed into HtmlNodes, forming a tree structure that represents the final .html document.
-
-The content folder contains all the .md origin files of our chosing, if we want to generate a different static site that's the folder we have to update.
-The static folder contains the .css , plus all the assets required (like images).
-Inside the repository we can also find a template.html file, much needed for the final transformation.
 
 
+```bash
+# Generate the site
+python src/main.py
 
-Here is an example of said transformation:
 
-### Block A 
+# Serve locally
+python -m http.server 8888 --directory public
 
-"This is a block of text with some inline features such as **bold text**, _italic text_, and ```code``` text."
+Then open http://localhost:8888
+ in your browser.
 
-The  block of text above would be than transformed into a tree of nodes, which I'll try to graphically represent here:
+Project Structure
+├── content/        # Markdown source files
+├── public/         # Generated HTML output
+├── src/            # Python source code
+└── template.html   # HTML template
 
-```
-[Main parent NODE: <div>
-    [Secondary parent: <p>
-        [Leaf Node: "This is a block of text with some inline features such as "]
-        [Leaf Node: <b>"bold text"</b>]
-        [Leaf Node: ", "]
-        [Leaf Node: <i>"italic text"</i>]
-        [Leaf Node: " and "]
-        [Leaf Node: <code>"code text"</code>]
-        [Leaf Node: "."]
-    </p>]
-</div>]
-```
+##What I Learned
+
+- How to parse Markdown and convert it to structured HTML
+
+- How to design a simple templating system in Python
+
+- How static site generators work under the hood
+
+- How to organize multi-file Python projects for clarity and scalability
+
+This repository is a great starting point for anyone wanting to understand the mechanics of static site generation and practice Python in a real-world project.
